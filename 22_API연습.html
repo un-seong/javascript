@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22_API연습</title>
+</head>
+<body>
+
+    <h1>22_API연습</h1>
+    <hr>
+
+    <!-- <script>
+        const url = 'https://apis.data.go.kr/6260000/AttractionService/getAttractionKr?serviceKey=NF4PcvbcGdvV5LBAJYPe6rHR%2FtWrtagpUSWWF42i%2FIukW2Dk0oifS%2BCfubThpV%2B8m7aSfGT8ymPr8azMqhyC2Q%3D%3D&pageNo=1&numOfRows=10&resultType=json'
+        fetch(url)
+        .then(resp => resp.json())
+        .then(json => {
+            // console.log(json.getAttractionKr.item)
+            const arr = json.getAttractionKr.item
+            console.log(arr)
+        })
+    </script> -->
+
+    <script>
+        const url = 'https://apis.data.go.kr/6260000/FestivalService/getFestivalKr?serviceKey=NF4PcvbcGdvV5LBAJYPe6rHR%2FtWrtagpUSWWF42i%2FIukW2Dk0oifS%2BCfubThpV%2B8m7aSfGT8ymPr8azMqhyC2Q%3D%3D&pageNo=1&numOfRows=10&resultType=json'
+        fetch(url)
+        .then(resp => resp.json())
+        .then(json => {
+            // console.log(json)
+            const arr = json.getFestivalKr.item
+            console.log(arr)
+        })
+
+    </script>
+    
+</body>
+</html>

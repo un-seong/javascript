@@ -1,0 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ include file="../manage/manageHeader.jsp"%>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<style>
+#surveyPreferQuestion {
+   width: 500px;
+   display: flex;
+}
+</style>
+
+<h3>회사별 선호 질문</h3>
+
+
+<select class="choice">
+   <option>--------</option>
+   <option value="myChart0">고라니[GOLANI]</option>
+   <option value="myChart1">못과 망치</option>
+   <option value="myChart2">비사이드홀딩스</option>
+</select>
+
+
+<div id="myChart0">mychart0</div>
+<div id="myChart1">mychart1</div>
+<div id="myChart2">mychart2</div>
+
+<script>
+      const choice = document.querySelector('.choice')
+      console.log(choice)
+
+
+               
+         for(let i = 0; i < 3; i++) {
+            const mychart = document.querySelector('#mychart'+[i])
+            mychart.style.display = 'none'
+         }
+         
+
+         
+
+         
+
+
+      function handler(event) {
+         console.log(event.target.value)
+         
+            
+         const myChartNone = []
+            for(let i = 0; i < 3; i++) {
+               const mychart = document.querySelector('#mychart'+[i])
+               console.log(mychart)
+               myChartNone.push(mychart)
+            }
+            console.log(myChartNone)
+
+            myChartNone.map(e => e.style.display = 'none')
+
+            console.log(myChartNone[0].getAttribute('id'))
+
+
+         const test = myChartNone.filter(data => (data.getAttribute('id') == event.target.value) == true)
+         console.log(test)
+
+         test.map(e => e.style.display = 'block')
+
+
+
+      }
+
+
+      choice.onchange = handler
+
+</script>
+
+
+
+</body>
+</html>

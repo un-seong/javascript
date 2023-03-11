@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+   .questionList.container {
+      border: 1px solid black;
+      padding: 10px;
+      margin: 10px;
+      width: 500px;
+      height: 100px;
+      overflow-y: scroll;
+   }
+   
+   input[type="text"] {
+      width: 250px;
+   }
+   
+   .question {
+      border: 1px solid black;
+      padding: 10px;
+      margin: 10px;
+      width: 500px;
+   }
+
+</style>
+
+</head>
+<body>
+
+<h3>설문 질문 추가하기</h3>
+
+<h4>설문 질문 리스트</h4>
+
+
+<div class="questionList container">
+   <input type="text" onkeyup="filter()" name="search" id="search" placeholder="질문의 키워드를 입력하세요.">
+
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="2" name="question_idx"><span class="eachQuestion">당신의 연령대는?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="3" name="question_idx"><span class="eachQuestion">당신의 성별은?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="4" name="question_idx"><span class="eachQuestion">당신의 직업은?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="5" name="question_idx"><span class="eachQuestion">귀하의 거주지역은 어디입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="6" name="question_idx"><span class="eachQuestion">귀하는 올해 만으로 나이가 어떻게 되십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="7" name="question_idx"><span class="eachQuestion">귀하의 성별은 무엇입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="8" name="question_idx"><span class="eachQuestion">귀하의 현재 직업은 무엇입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="9" name="question_idx"><span class="eachQuestion">귀하는 본인 또는 가족의 전반적인 경제적 상황에 대해 알고 계십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="10" name="question_idx"><span class="eachQuestion">귀하는 본인 또는 가족의 주요 소비결정 시 주로 참여하시는 편입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="11" name="question_idx"><span class="eachQuestion">귀하는 본인 또는 가족의 주요 소비생활은 어떤것입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="12" name="question_idx"><span class="eachQuestion">다음의 점포를 직접 방문하여 이용해 보셨습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="13" name="question_idx"><span class="eachQuestion">선택한 점포의 이용횟수는 얼마입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="14" name="question_idx"><span class="eachQuestion">선택한 점포의 1회 구매액은 얼마입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="15" name="question_idx"><span class="eachQuestion">다음의 거래를 이용해보셨습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="16" name="question_idx"><span class="eachQuestion">선택한 거래의 이용횟수는 얼마입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="17" name="question_idx"><span class="eachQuestion">선택한 거래의 1회 구매액은 얼마입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="18" name="question_idx"><span class="eachQuestion">도서관에 얼마나 자주 방문하시나요?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="19" name="question_idx"><span class="eachQuestion">도서관에 가는 이유는 무엇입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="20" name="question_idx"><span class="eachQuestion">최근 1년간 도서관에서 도서자료 및 대출을 한 경험이 있습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="21" name="question_idx"><span class="eachQuestion">도서관에 귀하께서 찾는 신간 도서를 가지고 있습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="22" name="question_idx"><span class="eachQuestion">도서관에 내가 찾는 분야의 도서를 잘 갖추고 있습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="23" name="question_idx"><span class="eachQuestion">최근 1년간 도서관 직원에게 정보를 문의한 경험이 있습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="24" name="question_idx"><span class="eachQuestion">도서관에 직원은 지식이 풍부해서 내가 원하는 정보에 대한 상담(문의)을 할 수 있습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="25" name="question_idx"><span class="eachQuestion">도서관에 직원은 친절합니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="26" name="question_idx"><span class="eachQuestion">도서관의 환경(시설, 청소상태 등)은 관리가 잘 되어 있어 독서 및 학습을 하기에 불편함이 없습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="27" name="question_idx"><span class="eachQuestion">도서관에서 컴퓨터를 이용하거나 DVD 등 자료를 이용할 수 있는 시설이나 장비가 잘 갖추어져 있어 이용하기 편합니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="28" name="question_idx"><span class="eachQuestion">도서관에서 진행하는 문화프로그램에 대한 정보는 쉽게 얻을 수 있습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="29" name="question_idx"><span class="eachQuestion">최근 1년간 도서관에서 진행하는 전시회/특강/강좌/공연/공모전 등의 문화 프로그램을 이용한적이 있습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="30" name="question_idx"><span class="eachQuestion">도서관 문화프로그램은 내용이 알차 내가 참여했거나 참여하고 싶은 프로그램이 있습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="31" name="question_idx"><span class="eachQuestion">도보, 자전거 등으로 방문하거나 대중교통(버스, 지하철 등)을 이용해 오기 편합니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="32" name="question_idx"><span class="eachQuestion">찾아가기 쉽도록 이정표가 잘 설치되어 있습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="33" name="question_idx"><span class="eachQuestion">색각 이상표라는 것을 가족이나 친척을 포함하여, 주변에서 얼마나 알고있습니까? </span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="34" name="question_idx"><span class="eachQuestion">귀하께서 색각검사표를 보면 기분이 어떻습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="35" name="question_idx"><span class="eachQuestion">스마트폰, 노트북 등의 전자기기를 사용할 때 색 보정 기능을 사용하십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="36" name="question_idx"><span class="eachQuestion">색약 보정 안경이나 렌즈를 알고 계십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="37" name="question_idx"><span class="eachQuestion">색약 보정 안경이나 렌즈의 구매 경험이 있으십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="38" name="question_idx"><span class="eachQuestion">귀하는 평상시 영화관람을 위해 영화관을 자주 이용하십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="39" name="question_idx"><span class="eachQuestion">귀하는 지난 3개월간 평균 몇번이나 영화관을 이용하셨습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="40" name="question_idx"><span class="eachQuestion">귀하가 주로 이용하는 영화관은 어느곳 입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="41" name="question_idx"><span class="eachQuestion">귀하가 자주 시청하는 영화의 장르는 어떤것입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="42" name="question_idx"><span class="eachQuestion">귀하는 영화를 예매할때 주로 어떤 방식으로 예매하십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="43" name="question_idx"><span class="eachQuestion">귀하는 지난 7일동안 커피전문점을 몇번 방문하셨습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="44" name="question_idx"><span class="eachQuestion">다음 다섯가지 커피브랜드 중 가장 선호하는 브랜드는 무엇입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="45" name="question_idx"><span class="eachQuestion">커피 전문점 이용을 결정할때 가장 결정적인 요인은 무엇입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="46" name="question_idx"><span class="eachQuestion">귀하가 커피 전문점에서 머무르는 평균적인 시간을 기재해주세요</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="47" name="question_idx"><span class="eachQuestion">커피 전문점을 이용하는 이유가 무엇입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="48" name="question_idx"><span class="eachQuestion">당신은 다가올 휴가 때 해외 여행을 희망하시나요?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="49" name="question_idx"><span class="eachQuestion">당신이 희망하는 해외여행 종류는?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="50" name="question_idx"><span class="eachQuestion">당신이 희망하는 여행지는?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="51" name="question_idx"><span class="eachQuestion">당신이 희망하는 여행 기간은?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="52" name="question_idx"><span class="eachQuestion">당신이 생각하는 여행의 1인당 금액은? (쇼핑비용 제외)</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="53" name="question_idx"><span class="eachQuestion">당신이 해외 여행지를 선택할 때 고려하는 사항은?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="54" name="question_idx"><span class="eachQuestion">당신은 국내여행보다 해외여행을 선호하시나요?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="55" name="question_idx"><span class="eachQuestion">귀하께서는 부산광역시에 살고 계시는 것에 대해 어느 정도 만족하십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="56" name="question_idx"><span class="eachQuestion">만족하시는 분야를 선택해 주십시요</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="57" name="question_idx"><span class="eachQuestion">불만족스러운 분야를 선택해 주십시요</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="58" name="question_idx"><span class="eachQuestion">3년동안 가장 큰 발전을 한 분야는 무엇이라고 생각하십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="59" name="question_idx"><span class="eachQuestion">아래 예문은 부산광역시의 장기적인 발전을 추진하는 주요 정책사업입니다 가장 잘추진되고 있는 사업을 선택해주세요</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="60" name="question_idx"><span class="eachQuestion">포털사이트에 대한 전반적인 만족도는 어떻습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="61" name="question_idx"><span class="eachQuestion">포털사이트에 방문하시는 주요 목적은 무엇입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="62" name="question_idx"><span class="eachQuestion">귀하는 최근 3개월동안 얼마나 자주 방문하셨습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="63" name="question_idx"><span class="eachQuestion">포털은 개인정보보호관련 정보 및 자료를 적절하게 제공하고 있습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="64" name="question_idx"><span class="eachQuestion">포털 내 온라인 교육서비스를 이용하기 위한 절차가 간편하다고 생각하십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="65" name="question_idx"><span class="eachQuestion">포털의 디자인 및 기능은 서비스를 이용하는데 적절하다고 생각하십니까? </span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="66" name="question_idx"><span class="eachQuestion">포털 내 서비스는 신속하게 제공하고 있다고 생각하십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="67" name="question_idx"><span class="eachQuestion">포털에서 제공하는 서비스에 대해 전반적으로 만족하십니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="68" name="question_idx"><span class="eachQuestion">봉지 피복의 역할은 동해 방지 외에도 중요한 점이 있습니다 알고 있습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="69" name="question_idx"><span class="eachQuestion">봉지 피복은 언제 했습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="70" name="question_idx"><span class="eachQuestion">봉지 피복까지 주로 수관의 어느 위치에 과실을 수확했습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="71" name="question_idx"><span class="eachQuestion">봉지 피복 직전의 가을 응애 방제는 했습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="72" name="question_idx"><span class="eachQuestion">봉지 피복하는 과실은 어느 정도 크기의 과실입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="73" name="question_idx"><span class="eachQuestion">봉지 피복은 전체 결과량 중 어느 정도의 비율로 실시했습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="74" name="question_idx"><span class="eachQuestion">봉지 피복은 나무의 한 부분에 집중시키는 방식입니까? 아니면 분산 방식입니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="75" name="question_idx"><span class="eachQuestion">월동 수확 재배를 하기 위해 봉지를 씌울 때 온주 밀감의 당도는 어느 정도였습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="76" name="question_idx"><span class="eachQuestion">월동 수확 재배를 하기 위해 봉지를 씌울 때 온주 밀감의 산 함량은 어느 정도였습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="77" name="question_idx"><span class="eachQuestion">본년도의 당 함량은 어느 정도였습니까?</span>
+   </div>
+   
+   <div class="questionList questionItem">
+      <input type="checkbox" value="78" name="question_idx"><span class="eachQuestion">본년도의 산 함량은 어느 정도였습니까?</span>
+   </div>
+   
+</div>
+
+
+<button id="button">질문 생성</button>   
+
+   <form method="POST">
+      <div class="wrap">
+         <div class="items"></div>          
+      </div>
+      <input type="submit" value="제출">
+  </form>
+
+  
+       <script>
+        const button = document.querySelector('#button')
+        const items = document.querySelector('.items')
+        const example = document.querySelector('.example')
+        const question = document.querySelector('.question')
+
+        function buttonHandler(event) {
+            const question = document.createElement('div')
+            question.classList.add('question')
+            question.setAttribute('id', 'question')
+
+            const input = document.createElement('input')
+            
+            const index = document.querySelectorAll('div.question').length
+
+            input.setAttribute('type', 'text')
+            input.setAttribute('id', 'question_content')
+            input.setAttribute('name', 'question_content')
+            input.setAttribute('placeholder', '질문 추가')
+            input.setAttribute('question_idx', '0')
+
+            const button = document.createElement('button')
+            button.innerHTML = "보기 추가"
+            button.setAttribute('id', 'exbutton')
+            button.setAttribute('type', 'button')
+
+            const insert = document.createElement('button')
+            insert.innerHTML = "삭제"
+            insert.setAttribute('id', 'drop')
+            insert.setAttribute('type', 'button')
+         
+
+            question.appendChild(input)
+            question.appendChild(button)
+            question.appendChild(insert)
+            items.appendChild(question)
+
+            // title 삭제
+            const dropbutton = Array.from(document.querySelectorAll('#drop'))
+
+            function dropHandler(event) {
+               event.target.parentNode.remove()
+            }      
+            dropbutton.forEach(e => e.onclick = dropHandler)
+
+
+            // 보기 추가
+            const exbutton = Array.from(document.querySelectorAll('#exbutton'))
+            console.log(exbutton)
+            
+            function exbuttonHandler(event) {
+               const example = document.createElement('div')
+               example.classList.add('example')
+
+               const input = document.createElement('input')
+
+               input.setAttribute('type', 'text')
+               input.setAttribute('id', 'example_content')
+               input.setAttribute('name', 'example_content')
+               input.setAttribute('placeholder', '보기 추가')
+               input.setAttribute('question_idx', '0')
+
+               const insert = document.createElement('button')
+               insert.innerHTML = "삭제"
+               insert.setAttribute('id', 'delete')
+               insert.setAttribute('type', 'button')
+
+               example.append(input)
+               example.appendChild(insert)
+               event.target.parentNode.appendChild(example)
+
+               // 보기 삭제
+               const deleteButton = Array.from(document.querySelectorAll('#delete'))
+               console.log(deleteButton)
+
+               function deleteHandler(event) {
+                  event.target.parentNode.remove()
+
+               }
+
+               deleteButton.forEach(e => e.onclick = deleteHandler)
+            }
+
+            exbutton.forEach(e => e.onclick = exbuttonHandler)
+
+         }
+
+        button.onclick = buttonHandler
+
+        
+        // 질문 검색 필터
+        function filter() {
+            var search, questionItem, eachQuestion;
+
+            search = document.getElementById("search").value;
+            console.log("search : " + search);
+            questionItem = document.querySelectorAll(".questionItem");
+            console.log(questionItem)
+
+
+            for (let i = 0; i < questionItem.length; i++) {
+                eachQuestion = questionItem[i].getElementsByClassName('eachQuestion');
+                console.log(eachQuestion)
+                console.log(eachQuestion[0].innerHTML.indexOf(search))
+
+                if (eachQuestion[0].innerHTML.indexOf(search) > -1) {
+                    questionItem[i].style.display = 'block'
+                }
+                else {
+                    questionItem[i].style.display = 'none'
+                }
+            }
+        }
+    </script>
+
+
+
+    <script>
+        const item = Array.from(document.querySelectorAll('.questionList.questionItem'))
+
+        const checkbox = Array.from(document.querySelectorAll('.questionList.questionItem > input[type="checkbox"]'))
+        for (let i = 0; i < checkbox.length; i++) {
+            checkbox[i].setAttribute('idx', i)
+        }
+
+        function checkboxHandler(event) {
+            if (event.target.checked == true) {
+               const question = document.createElement('div')
+               question.classList.add('question')
+               question.setAttribute('id', 'question')           
+
+               const input = document.createElement('input')
+               const value = event.target.getAttribute('value')
+               console.log(value)
+
+               input.setAttribute('type', 'text')
+               input.setAttribute('name', 'question_content')
+               input.setAttribute('id', 'question_content')
+               input.setAttribute('value', item[event.target.getAttribute('idx')].innerText)
+               input.setAttribute('question_idx', value)
+
+               question.setAttribute('value', value)
+
+               const button = document.createElement('button')
+               button.innerHTML = "보기 추가"
+               button.setAttribute('id', 'exbutton')
+               button.setAttribute('type', 'button')
+
+               const insert = document.createElement('button')
+               insert.innerHTML = "삭제"
+               insert.setAttribute('id', 'drop1')
+               insert.setAttribute('type', 'button')
+
+               question.appendChild(input)
+               question.appendChild(button)
+               question.appendChild(insert)
+
+               items.appendChild(question)
+
+               const checkboxex = document.querySelectorAll('#exbutton')
+               console.log(checkboxex)
+
+               // title 삭제
+               const dropbutton = Array.from(document.querySelectorAll('#drop1'))
+
+               function dropHandler(event) {
+                  const input = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+
+                  const test= input.filter(data => event.target.parentNode.getAttribute('value').includes(data.getAttribute('value')) == true)
+                  console.log(test)
+                  test[0].checked = false
+        
+                  event.target.parentNode.remove()
+               }      
+               dropbutton.forEach(e => e.onclick = dropHandler)
+
+
+               // 체크박스 질문 추가
+               function checkboxexHandler(event) {
+                  const example = document.createElement('div')
+                  example.classList.add('example')
+
+                  const input = document.createElement('input')
+
+                  input.setAttribute('type', 'text')
+                  input.setAttribute('id', 'example_content')
+                  input.setAttribute('name', 'example_content')
+                  input.setAttribute('placeholder', '보기 추가')
+                  input.setAttribute('question_idx', event.target.parentNode.getAttribute('value'))
+
+                  const insert = document.createElement('button')
+                  insert.innerHTML = "삭제"
+                  insert.setAttribute('id', 'delete')
+                  insert.setAttribute('type', 'button')
+
+                  example.append(input)
+                  example.appendChild(insert)
+                  event.target.parentNode.appendChild(example)
+
+                  const deleteButton = Array.from(document.querySelectorAll('#delete'))
+                  console.log(deleteButton)
+
+                  // 보기 삭제
+                  function deleteHandler(event) {
+                     event.target.parentNode.remove()
+
+                  }  
+
+                  deleteButton.forEach(e => e.onclick = deleteHandler)
+               }
+
+               checkboxex.forEach(e => e.onclick = checkboxexHandler)
+
+            }
+            else {               
+               const question = Array.from(document.querySelectorAll('.question'))
+               
+               const checkboxclear= question.filter(data => event.target.value.includes(data.getAttribute('value')) == true)
+            
+               checkboxclear.map(e => e.remove())              
+
+            }
+
+            }
+
+      checkbox.map(e => e.onchange = checkboxHandler)
+    </script>
+
+    <script>
+      const form = document.forms[0]
+        
+         function testHandler(event) {
+          	event.preventDefault() 
+
+           const questionDivList = Array.from(document.querySelectorAll('.question'))
+           const result = questionDivList.map(e => {
+              const ob = {}
+              ob['question_idx'] =       +e.querySelector('#question_content').getAttribute('question_idx')
+              ob['question_content'] =    e.querySelector('#question_content').value
+              ob['example_content'] =       []
+              
+              const example_contentList = e.querySelectorAll('input[name="example_content"]')
+              example_contentList.forEach(ee => {
+                 ob['example_content'].push(ee.value)
+              })
+                return ob
+           })
+           console.log(result)
+
+           
+           const cpath = '/jiago'
+   	   const url = location.href
+           const opt = {
+                 method: 'POST',
+                 body: JSON.stringify(result),
+                 headers: {
+                    'Content-Type' : 'application/json; charset=utf-8'
+                 }
+           }
+           
+           fetch(url, opt)
+           .then(resp => resp.text())
+           .then(text => {
+              alert(text)
+              location.href = cpath		// 이후에는 관리자 페이지 메인으로 이동하도록 수정할것
+           })
+           .error(err => console.log(err))
+           
+        }
+        
+      form.onsubmit = testHandler
+                 
+    </script>
+
+</body>
+</html>

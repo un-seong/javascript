@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9_AJAX테스트.html (DB 데이터로 만들기)</title>
+    <style>
+        #root > div {
+            display: flex;
+        }
+
+        #root > div > div {
+            border: 1px solid black;
+            padding: 5px 10px;
+            width: 150px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1>9_AJAX테스트.html (DB 데이터로 만들기)</h1>
+    <hr>
+
+    <div id="root"></div>
+
+    <script>
+        const root = document.getElementById('root')
+        const url = 'http://192.168.112.7:8080/member5'
+        const opt = {
+            method: 'GET'
+        }
+
+        fetch(url, opt)                      // 주소를 요청하면
+        .then(resp => resp.json())      // 응답을 받아서 json 형태로 처리하여
+        .then(json => {                 // json을 이용하여 코드를 진행하면 된다
+            const arr = json
+            console.log(arr)
+            console.log(new Date(arr[1].BIRTH).toISOString().split('T')[0])
+            console.log(new Date(arr[1].BIRTH).toLocaleDateString().split('T')[0])
+            console.log(new Date(arr[1].BIRTH).toISOString().split('T')[0].replace('-', '년').replace('-', '월') + '일')
+
+
+            arr.forEach(dto => {
+                const item = document.createElement('div')
+                //item.className = 'item'
+                item.classList.add('item')
+                item.classList.add('header')
+                item.innerHTML += '<div class="idx">' + dto.IDX + '</div>'
+                item.innerHTML += '<div class="userid">' + dto.USERID + '</div>'
+                item.innerHTML += '<div class="userpw">' + dto.USERPW + '</div>'
+                item.innerHTML += '<div class="gender">' + dto.GENDER + '</div>'
+                item.innerHTML += '<div class="birth">' 
+                            + new Date(dto.BIRTH).toISOString().split('T')[0].replace('-', '년').replace('-', '월')+'일'
+                            + '</div>'
+                
+                root.appendChild(item)
+            })
+
+
+            //for(let i=0; i < 5; i++){
+                //const item = document.createElement('div')
+                //item.innerHTML += '<div class="userid">' + arr[i].USERID + '</div>'
+                //item.innerHTML += '<div class="userpw">' + arr[i].USERPW + '</div>'
+                //item.innerHTML += '<div class="gender">' + arr[i].GENDER + '</div>'
+                //item.innerHTML += '<div class="birth">' + new Date(arr[i].BIRTH).toISOString().split('T')[0].replace('-', '년').replace('-', '월')+'일'+ '</div>'
+                
+                //root.appendChild(item)
+            //}
+
+                   
+        })
+
+
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="main" value="0">
+	<div class="surveyList_start" index="0">
+		<img src="설문_시작페이지.png" style="width: 200px;">
+	</div>
+
+    <div class="surveyList item" question_idx=1>
+		<div class="surveyList surveyTitle">1 당신의 연령대는?</div>
+	</div>
+
+	<div class="surveyList item" question_idx=2>
+		<div class="surveyList surveyTitle">2 당신의 성별은?</div>
+	</div>
+
+	<div class="surveyList item" question_idx=3>
+		<div class="surveyList surveyTitle">3 당신의 직업은?</div>
+	</div>
+
+
+
+	<div class="surveyList example" question_idx="1">
+		<div class="surveyList surveyExample">
+			<input type="radio" name="1" value="10대" required>
+				10대
+		</div>
+	</div>
+
+	<div class="surveyList example" question_idx="1">
+		<div class="surveyList surveyExample">
+			<input type="radio" name="1" value="20대" required>
+				20대
+		</div>
+	</div>
+
+	<div class="surveyList example" question_idx="2">
+		<div class="surveyList surveyExample">
+			<input type="radio" name="2" value="남성" required>
+				남성
+		</div>
+	</div>
+
+	<div class="surveyList example" question_idx="2">
+		<div class="surveyList surveyExample">
+			<input type="radio" name="2" value="여성" required>
+				여성
+		</div>
+	</div>
+
+	<div class="surveyList example" question_idx="3">
+		<div class="surveyList surveyExample">
+			<input type="radio" name="3" value="사무직" required>
+				사무직
+		</div>
+	</div>
+
+	<div class="surveyList example" question_idx="3">
+		<div class="surveyList surveyExample">
+			<input type="radio" name="3" value="영업직" required>
+				영업직
+		</div>
+	</div>
+
+	<div class="surveyList example" question_idx="3">
+		<div class="surveyList surveyExample">
+			<input type="radio" name="3" value="기타" required>
+				기타
+		</div>
+	</div>
+
+</div>
+
+
+    <button class="button before">이전</button>
+    <button class="button after">다음</button>
+
+	<a><button class="button submit">제출</button></a>
+
+
+
+
+	<script>
+		const main = document.querySelector('.main')
+
+        const buttonBefore = document.querySelector('.button.before')
+        const buttonAfter = document.querySelector('.button.after')
+
+        const questionAll = Array.from(document.querySelectorAll('.surveyList.item'))
+		console.log(questionAll.length)
+        
+		const exampleAll = Array.from(document.querySelectorAll('.surveyList.example'))
+		       
+        questionAll.map(e => e.classList.add('hidden'))
+        exampleAll.map(e => e.classList.add('hidden'))
+
+		const input = Array.from(document.querySelectorAll('.surveyList.surveyExample > input[type="radio"]'))
+
+		// 답을 저장해두는 배열!
+		function inputHandler(event) {
+			const inputArr = Array.from(document.querySelectorAll('.surveyList.surveyExample > input[type="radio"]:checked')).map(e => e.value)
+			console.log(inputArr)
+
+		}
+		input.map(e => e.onclick = inputHandler)
+
+		function inputHandler(event) {
+			const inputArr = Array.from(document.querySelectorAll('.surveyList.surveyExample > input[type="radio"]:checked')).map(e => e.value)
+			console.log(inputArr)
+			
+			const inputArr1 = JSON.stringify(inputArr)
+			console.log(inputArr1)
+
+			
+			const submit = document.querySelector('.button.submit')
+			console.log(submit)
+			
+			// 정답 제출할거
+			if(inputArr.length == questionAll.length) {	// 문항수와 정답지의 길이가 같으면 실행함
+				
+				
+				
+				
+			}
+		}
+		input.map(e => e.onclick = inputHandler)
+		
+
+
+
+		// 이전 문제와 보기를 보여주는 핸들러
+        function buttonBeforeHandler(event) {
+			if(main.getAttribute('value') > 1) {
+				questionAll.map(e => e.classList.add('hidden'))
+				exampleAll.map(e => e.classList.add('hidden'))
+				main.setAttribute('value', +main.getAttribute('value')-1)
+				let question = ''
+				let example = ''
+
+				const mainValue = document.querySelector('.main').getAttribute('value')
+			
+				question = questionAll.filter(data => (data.getAttribute('question_idx') == mainValue) == true)
+
+				example = exampleAll.filter(data => (data.getAttribute('question_idx') == mainValue) == true)
+
+				question.forEach(e => e.classList.remove('hidden'))
+				example.forEach(e => e.classList.remove('hidden'))
+			}
+        }
+
+		// 다음 문제와 보기를 보여주는 핸들러
+        function buttonAfterHandler(event) {
+			if(main.getAttribute('value') < questionAll.length) {
+				const start = document.querySelector('.surveyList_start')
+				start.classList.add('hidden')
+				questionAll.map(e => e.classList.add('hidden'))
+				exampleAll.map(e => e.classList.add('hidden'))
+				main.setAttribute('value', +main.getAttribute('value')+1)
+				let question = ''
+				let example = ''
+
+				const mainValue = document.querySelector('.main').getAttribute('value')
+
+				question = questionAll.filter(data => (data.getAttribute('question_idx') == mainValue) == true)
+
+				example = exampleAll.filter(data => (data.getAttribute('question_idx') == mainValue) == true)
+
+				question.forEach(e => e.classList.remove('hidden'))
+				example.forEach(e => e.classList.remove('hidden'))
+			}
+        }
+
+		buttonBefore.onclick = buttonBeforeHandler
+        buttonAfter.onclick = buttonAfterHandler        
+    </script>
+
+
+</body>
+</html>

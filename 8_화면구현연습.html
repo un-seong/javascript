@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8_화면구현연습.html</title>
+    <style>
+        .title {
+            display: flex;
+        }
+
+        .title > div:nth-child(1) {
+            width: 200px;
+        }
+
+        .title > div {
+            border: 1px solid black;
+            padding: 5px 10px;
+            width: 100px;
+            text-align: center;
+            background-color: black;
+            color: wheat;
+        }
+
+        .item {
+            display: flex;
+        }
+
+        .item > div:nth-child(1) {
+                width: 200px;
+        }
+
+        .item > div {
+            border: 1px solid black;
+            padding: 5px 10px;
+            width: 100px;
+            text-align: center;
+        }
+
+        #table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th {
+            background-color: black;
+            color: wheat;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 5px 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>8_화면구현연습.html</h1>
+    <hr>
+
+    <h3>div로 만들어봄</h3>
+    <div id="root"></div>
+
+
+
+    <h3>표로 만들어봄</h3>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+                <th>합계</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+
+        </tbody>
+        
+    </table>
+ 
+
+
+    <script>
+        const root = document.getElementById('root')
+        // arr의 데이터를 7번 코드와 같은 방식으로 화면에 반영하세요
+        const arr = [
+            { name: '이지은', kor : 100, eng: 99, mat: 87 },
+            { name: '홍진호', kor : 22, eng: 22, mat: 22 },
+            { name: '유재석', kor : 95, eng: 92, mat: 97 },
+            { name: '신동엽', kor : 100, eng: 84, mat: 92 },
+            { name: '강호동', kor : 85, eng: 62, mat: 75 }
+        ]
+
+        const title = document.createElement('div')
+        title.className = 'title'
+        title.innerHTML += '<div class="name">이름</div>'
+        title.innerHTML += '<div class="kor">국어</div>'
+        title.innerHTML += '<div class="eng">영어</div>'
+        title.innerHTML += '<div class="mat">수학</div>'
+        title.innerHTML += '<div class="sum">합계</div>'        
+
+        root.appendChild(title)
+
+        
+        arr.forEach(dto => {
+            const item = document.createElement('div')
+            const sum = dto.kor + dto.eng + dto.mat
+
+            item.className = 'item'
+            item.innerHTML += '<div class="name">' + dto.name + '</div>'
+            item.innerHTML += '<div class="kor">' +dto.kor + '</div>'
+            item.innerHTML += '<div class="eng">' + dto.eng + '</div>'
+            item.innerHTML += '<div class="mat">' + dto.mat + '</div>'
+            item.innerHTML += '<div class="sum">' + sum + '</div>'
+
+            root.appendChild(item)
+        })
+
+
+
+        const table = document.getElementById('tbody')
+
+        arr.forEach(dto => {
+            const item = document.createElement('tr')
+            const sum = dto.kor + dto.eng + dto.mat
+
+            item.className = 'item1'
+            item.innerHTML += '<td>' + dto.name + '</td>'
+            item.innerHTML += '<td>' + dto.kor + '</td>'
+            item.innerHTML += '<td>' + dto.eng + '</td>'
+            item.innerHTML += '<td>' + dto.mat + '</td>'
+            item.innerHTML += '<td>' + sum + '</td>'
+
+            table.appendChild(item)
+        })
+        
+
+    </script>
+    
+</body>
+</html>

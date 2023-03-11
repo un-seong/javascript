@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .root {
+            width: 1920px;
+            height: 1080px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            display: flex;
+        }
+
+        .main {
+            margin-top: 20px;
+        }
+
+        .maintop {
+            display: flex;
+            justify-content: center;
+            
+        }
+
+        .maintop > div {
+            border: 1px solid black;
+            padding: 10px 15px;
+            width: 100px;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+
+        .maintop > div:nth-child(1) {
+            width: 200px;
+        }
+
+        .item {
+            display: flex;
+            justify-content: center;
+        }
+
+        .item > div {
+            border: 1px solid black;
+            padding: 10px 15px;
+            width: 100px;
+            text-align: center;
+        }
+
+        .item > div:nth-child(1) {
+            width: 200px;
+        }
+    
+        .blue {
+            background-color: skyblue;
+        }
+
+        .red {
+            background-color: lightpink;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    
+    <h3>ITBANK.GG</h3>
+    <hr>
+
+    <div class="root">
+        <div class="wrap">
+            <div id="filter">
+                <label><input type="checkbox" name="teamFilter" value="red">레드팀</label>
+                <label><input type="checkbox" name="teamFilter" value="blue">블루팀</label>
+            </div>
+            <div id="avgFilter">
+                <label><input type="checkbox" id="killFilter" name="killFilter" value="kill">kill-10인 평균</label>
+                <label><input type="checkbox" id="deathFilter" name="deathFilter" value="death">death-10인 평균</label>
+            </div>
+
+        </div>
+            <div class="main">
+                <div class="maintop">
+                    <div class="user">유저</div>
+                    <div class="champion">챔피언</div>
+                    <div class="team">TEAM</div>
+                    <div class="kill">죽임</div>
+                    <div class="death">사망</div>
+                    <div class="assist">도움</div>
+                    <div class="damage">딜량</div>
+                    <div class="cs">CS</div>
+                </div>
+                <div id="items"></div>
+            </div>
+    </div>
+
+
+    <script type="text/javascript" src="20.js"></script>
+
+    <script>
+        const items = document.getElementById('items')
+
+        dataList.forEach(data => {
+            const item = `
+            <div class="item ">
+                <div class="user">${data.user}</div>
+                <div class="champion">${data.champion}</div>
+                <div class="team">${data.team}</div>
+                <div class="kill">${data.kill}</div>
+                <div class="death">${data.death}</div>
+                <div class="assist">${data.assist}</div>
+                <div class="damage">${data.damage}</div>
+                <div class="cs">${data.cs}</div>
+            </div>`
+            items.innerHTML += item
+        })
+    </script>
+
+<script>
+
+    
+
+    const headerList = document.querySelectorAll('.maintop > div')
+   console.log(headerList)
+   const itemList = Array.from(document.querySelectorAll(".main > #items > .item"))
+
+   headerList.forEach(div => div.setAttribute('asc', 1))
+
+   function handler(event) {
+       const order = event.target.className
+       console.log(order)
+
+       const flag = event.target.getAttribute('asc')
+       console.log(flag)
+
+       if(order == 'user' || 'champion' || 'team') {
+           event.target.setAttribute('asc', -1)
+           itemList.sort((a,b) => {
+               const aa = a.querySelector('.'+order).innerText
+               const bb = b.querySelector('.'+order).innerText
+               return aa > bb ? 1: -1
+           })
+           itemList.forEach(item => items.appendChild(item))
+       }
+       else {
+           event.target.setAttribute('asc', 1)
+           itemList.sort((a,b) => {
+               const aa = a.querySelector('.'+order).innerText
+               const bb = b.querySelector('.'+order).innerText
+               return aa > bb ? -1 : 1
+           })
+           itemList.forEach(item => items.appendChild(item))
+       }
+
+       if(flag == 1) {
+           event.target.setAttribute('asc', -1)
+           itemList.sort((a,b) => {
+               const aa = +a.querySelector('.'+order).innerText
+               const bb = +b.querySelector('.'+order).innerText
+               return +aa > +bb ? 1:-1
+           })
+           itemList.forEach(item => items.appendChild(item))
+       }
+       else {
+           event.target.setAttribute('asc', 1)
+           itemList.sort((a,b) => {
+               const aa = +a.querySelector('.'+order).innerText
+               const bb = +b.querySelector('.'+order).innerText
+               return +aa > +bb ? -1 : 1
+           })
+           itemList.forEach(item => items.appendChild(item))
+       }
+   }
+   headerList.forEach(e => e.onclick = handler)
+</script>
+
+
+    <script>
+        const boxList = document.querySelectorAll('#filter input[type="checkbox"]')
+        const team = Array.from(document.querySelectorAll('#items > .item > .team'))
+        // team의 value값
+
+        team.forEach(team => team.setAttribute('value', team.innerText == '블루' ? 'blue' : 'red'))
+
+        function handler(event) {
+            const checkboxArray = Array.from(document.querySelectorAll('#filter input[type="checkbox"]:checked')).map(e => e.value)
+            console.log(checkboxArray) // 내가 체크하는 곳의 value값
+
+            const itemList = Array.from(document.querySelectorAll('.main > #items > .item'))
+            console.log(itemList) // hidden 추가 할 곳
+
+            const teamValue = team.map(e => e.getAttribute('value'))
+            console.log(teamValue) // team의 value값
+
+            const result = itemList.filter(data => checkboxArray.includes(data.querySelector('.team').getAttribute('value')) == false)
+            console.log(result) // 선택받지 못한 자
+
+            const itemBack = itemList.filter(data => checkboxArray.includes(data.querySelector('.team').getAttribute('value')) == true)
+            console.log(itemBack) // 선택받은 자
+
+            const itemBackground = Array.from(document.querySelectorAll('.main > #items > .item > div'))
+            console.log(itemBackground) // background 줄 곳
+
+
+            itemList.forEach(data => data.classList.remove('hidden'))
+            itemBackground.forEach(data => data.classList.remove('blue'))
+            itemBackground.forEach(data => data.classList.remove('red'))
+            itemBackground.forEach(data => data.classList.remove('red,blue'))
+
+            if(result.length == itemList.length) {
+                itemBackground.forEach(data => data.classList.remove('blue'))
+                itemBackground.forEach(data => data.classList.remove('red'))
+                itemBackground.forEach(data => data.classList.remove('red,blue'))
+                return
+            }
+
+            result.forEach(data => data.classList.add('hidden'))
+            itemBackground.forEach(data => data.classList.add(checkboxArray))
+        }
+
+        boxList.forEach(box => box.onchange = handler)
+    </script>
+
+    <!-- <script>
+        const killList = document.querySelectorAll('#avgFilter input[id="killFilter"]')
+        console.log(killList)
+    
+        let kill = Array.from(document.querySelectorAll('.main > #items > .item > .kill')).map(e => +e.innerText)
+
+        let killSum = 0
+        for(let i = 0; i < kill.length; i++) {
+            killSum += kill[i]
+        }
+    
+        let killAvg = killSum / 10
+        console.log(killAvg)
+         
+        function handler(event) {
+            const order = event.target.value
+            console.log(order)
+            
+            const ischecked1 = document.getElementById('killFilter')
+            const checkbox1 = ischecked1.checked
+            console.log(checkbox1)
+
+            if(order == 'kill' && checkbox1 == true) {
+                const result1 = itemList1.filter(data => Math.floor(deathAvg) <= data.querySelector('.death').innerText)
+                console.log(result1) // 선택받지 못한 자                
+                result1.forEach(data => data.classList.add('hidden'))
+                
+            }
+            else {
+                itemList1.forEach(data => data.classList.remove('hidden'))
+            }
+
+        }
+        killList.forEach(avg => avg.onchange = handler)
+    </script> -->
+
+    <script>
+        const deathList = document.querySelectorAll('#avgFilter input[name="deathFilter"]')
+        console.log(deathList)
+
+        let death = Array.from(document.querySelectorAll('.main > #items > .item > .death')).map(e => +e.innerText)
+
+        const itemList1 = Array.from(document.querySelectorAll('.main > #items > .item'))
+
+        let deathSum = 0
+        for(let i = 0; i < death.length; i++) {
+            deathSum += death[i]
+        }
+
+        let deathAvg = deathSum / 10
+        console.log(Math.floor(deathAvg))
+
+        function handler(event) {
+            const order = event.target.value
+            console.log(order)
+            
+            const ischecked2 = document.getElementById('deathFilter')
+            const checkbox2 = ischecked2.checked
+            console.log(checkbox2)
+            
+            if(order == 'death' && checkbox2 == true) {
+                const result1 = itemList1.filter(data => Math.floor(deathAvg) <= data.querySelector('.death').innerText)
+                console.log(result1) // 선택받지 못한 자                
+                result1.forEach(data => data.classList.add('hidden'))
+            }
+            else {
+                itemList1.forEach(data => data.classList.remove('hidden'))
+            }
+
+        }
+        deathList.forEach(avg => avg.onchange = handler)        
+    </script>
+</body>
+</html>
